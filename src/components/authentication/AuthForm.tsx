@@ -1,6 +1,9 @@
 "use client"
 
 import React, { useState } from 'react'
+import LoginForm from './LoginForm'
+import { Button } from '../ui/button'
+import SignupForm from './SignupForm'
 
 const AuthForm = () => {
     const [mode, setMode] = useState("login")
@@ -20,10 +23,20 @@ const AuthForm = () => {
                 </p>
             </div>
             {
-                mode === "login" && <span>LoginForm</span>
+                mode === "login" && <>
+                    <LoginForm />
+                    <div className='text-center flex justify-between'>
+                        <Button variant={'link'} className='p-0' onClick={() => setMode('signup')}>
+                            Need an account? Sign up
+                        </Button>
+                        <Button variant={'link'} className='p-0' onClick={() => setMode('reset')}>
+                            Forgot password?
+                        </Button>
+                    </div>
+                </>
             }
             {
-                mode === "signup" && <span>SignUp Form</span>
+                mode === "signup" && <SignupForm />
             }
             {
                 mode === "reset" && <span>Reset Password Form</span>
