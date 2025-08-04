@@ -29,13 +29,19 @@ const formSchema = z.object({
     }),
 
     password: z.string().nonempty('Password is required!').min(8, {
-            error: 'Password must be at least 8 characters long!'
-        }).regex(
-            passwordValidationRegex, {
-            error: 'Password must contain 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number and 1 special letter'
-        })
-        
+        error: 'Password must be at least 8 characters long!'
+    }).regex(
+        passwordValidationRegex, {
+        error: 'Password must contain 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number and 1 special letter'
+    }),
 
+
+    confirmPassword: z.string().nonempty('Confirm Password is required!')
+
+
+}).refine(data => data.password === data.confirmPassword, {
+    error: 'Enter correct password',
+    path: ["confirmPassword"]
 })
 
 const SignupForm = ({ className }: { className?: string }) => {
