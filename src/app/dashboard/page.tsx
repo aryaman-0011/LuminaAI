@@ -1,8 +1,9 @@
+import LogOutbtn from '@/components/authentication/LogOutbtn'
 import React from 'react'
 
 const DashboardPage = () => {
   return (
-    <div>DashboardPage</div>
+    <div>DashboardPage <LogOutbtn /></div>
   )
 }
 
