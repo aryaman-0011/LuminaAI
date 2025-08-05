@@ -75,7 +75,7 @@ const LoginForm = ({ className }: { className?: string }) => {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className='w-full'>Submit</Button>
+                    <Button type="submit" className='w-full'>Login</Button>
                 </form>
             </Form>
         </div>
