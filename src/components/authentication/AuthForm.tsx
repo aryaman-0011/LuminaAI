@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import LoginForm from './LoginForm'
 import { Button } from '../ui/button'
 import SignupForm from './SignupForm'
+import Link from 'next/link'
 
 const AuthForm = () => {
     const [mode, setMode] = useState("login")
@@ -36,7 +37,17 @@ const AuthForm = () => {
                 </>
             }
             {
-                mode === "signup" && <SignupForm />
+                mode === "signup" && <>
+                    <SignupForm />
+                    <div className='text-center'>
+                        <Button variant={'link'} className='p-0' onClick={() => setMode('login')}>
+                            Already have an account? Login
+                        </Button>
+                    </div>
+                    <p className='px-8 text-center text-sm text-muted-foreground'>
+                        By clicking sign up, you agree to our <Link href="#" className='underline underline-offset-4 hover:text-primary'>Terms of Service</Link> and <Link href="#" className='underline underline-offset-4 hover:text-primary'>Privacy Policy</Link>
+                    </p>
+                </>
             }
             {
                 mode === "reset" && <span>Reset Password Form</span>
