@@ -51,7 +51,9 @@ const SignupForm = ({ className }: { className?: string }) => {
         resolver: zodResolver(formSchema),
         defaultValues: {
             email: "",
-            password: ""
+            password: "",
+            full_name: "",
+            confirmPassword: ""
         },
     })
 
@@ -67,6 +69,19 @@ const SignupForm = ({ className }: { className?: string }) => {
         <div className={cn("grid gap-6", className)}>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                    <FormField
+                        control={form.control}
+                        name="full_name"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Full Name</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="Enter your full name" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
                     <FormField
                         control={form.control}
                         name="email"
@@ -94,7 +109,21 @@ const SignupForm = ({ className }: { className?: string }) => {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className='w-full'>Submit</Button>
+
+                    <FormField
+                        control={form.control}
+                        name="confirmPassword"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Confirm Password</FormLabel>
+                                <FormControl>
+                                    <Input type='password' placeholder="Confirm your password" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <Button type="submit" className='w-full'>Sign Up</Button>
                 </form>
             </Form>
         </div>
