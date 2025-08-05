@@ -5,6 +5,7 @@ import LoginForm from './LoginForm'
 import { Button } from '../ui/button'
 import SignupForm from './SignupForm'
 import Link from 'next/link'
+import ResetPassword from './ResetPassword'
 
 const AuthForm = () => {
     const [mode, setMode] = useState("login")
@@ -50,7 +51,14 @@ const AuthForm = () => {
                 </>
             }
             {
-                mode === "reset" && <span>Reset Password Form</span>
+                mode === "reset" && <>
+                    <ResetPassword />
+                    <div className='text-center'>
+                        <Button variant={'link'} className='p-0' onClick={() => setMode('login')}>
+                            back to login
+                        </Button>
+                    </div>
+                </>
             }
         </div>
     )
