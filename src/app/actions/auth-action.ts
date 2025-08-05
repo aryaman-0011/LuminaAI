@@ -33,3 +33,25 @@ export async function signup(formdata: FormData): Promise<AuthResponse> {
     }
 
 }
+
+
+export async function login(formdata: FormData): Promise<AuthResponse> {
+    const supabase = await createClient()
+
+
+    const data = {
+        email: formdata.get('email') as string,
+        password: formdata.get('password') as string,
+    }
+
+
+
+    const { data: signInData, error } = await supabase.auth.signInWithPassword(data)
+
+    return {
+        error: error?.message || 'There was an error logging in!',
+        success: !error,
+        data: signInData || null
+    }
+
+}
