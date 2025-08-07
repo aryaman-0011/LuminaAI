@@ -2,7 +2,12 @@
 
 import * as React from "react"
 import {
+  CreditCard,
+  Frame,
   Image,
+  Images,
+  Layers,
+  Settings2,
   Sparkles,
   SquareTerminal,
 } from "lucide-react"
@@ -28,7 +33,32 @@ const data = [
     title: "Generate Image",
     url: '/image-generation',
     icon: Image
-  }
+  },
+  {
+    title: "My Models",
+    url: '/models',
+    icon: Frame
+  },
+  {
+    title: "Train Model",
+    url: '/model-training',
+    icon: Layers
+  },
+  {
+    title: "My Images",
+    url: '/gallery',
+    icon: Images
+  },
+  {
+    title: "Billing",
+    url: '/billing',
+    icon: CreditCard
+  },
+  {
+    title: "Settings",
+    url: '/account-settings',
+    icon: Settings2
+  },
 ]
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
