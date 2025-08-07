@@ -1,15 +1,6 @@
-"use client"
-
 import * as React from "react"
 import {
-  CreditCard,
-  Frame,
-  Image,
-  Images,
-  Layers,
-  Settings2,
   Sparkles,
-  SquareTerminal,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -21,47 +12,23 @@ import {
   SidebarMenuButton,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import { createClient } from "@/lib/supabase/server"
+import { NavUser } from "./nav-user"
 
 // This is sample data.
-const data = [
-  {
-    title: "Dashboard",
-    url: '/dashboard',
-    icon: SquareTerminal
-  },
-  {
-    title: "Generate Image",
-    url: '/image-generation',
-    icon: Image
-  },
-  {
-    title: "My Models",
-    url: '/models',
-    icon: Frame
-  },
-  {
-    title: "Train Model",
-    url: '/model-training',
-    icon: Layers
-  },
-  {
-    title: "My Images",
-    url: '/gallery',
-    icon: Images
-  },
-  {
-    title: "Billing",
-    url: '/billing',
-    icon: CreditCard
-  },
-  {
-    title: "Settings",
-    url: '/account-settings',
-    icon: Settings2
-  },
-]
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+
+  const supabase = await createClient()
+  const { data } = await supabase.auth.getUser()
+
+  const user = {
+    name: data.user?.user_metadata.full_name,
+    email: data.user?.email ?? ","
+  }
+
+
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -81,10 +48,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenuButton>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data} />
+        <NavMain />
       </SidebarContent>
       <SidebarFooter>
-        {/* <NavUser user={data.user} /> */}
+        <NavUser user={user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
