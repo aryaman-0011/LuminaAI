@@ -1,5 +1,5 @@
 import React from 'react'
-import AuthImg from '@/public/Abstract Curves and Colors.jpeg'
+import AuthImg from '@/public/Abstract Curves and Colors.png'
 import Image from 'next/image'
 import Logo from '@/components/logo'
 import AuthForm from '@/components/authentication/AuthForm'
