@@ -11,7 +11,7 @@ const LogOutbtn = () => {
     }
 
     return (
-        <span onClick={handleLogOut} className='inline-block w-full cursor-pointer text-destructive'>LogOutbtn</span>
+        <span onClick={handleLogOut} className='inline-block w-full cursor-pointer text-destructive'>Logout</span>
     )
 }
 
