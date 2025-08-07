@@ -14,6 +14,8 @@ import {
 
 } from "@/components/ui/sidebar"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { cn } from "@/lib/utils"
 
 export function NavMain({
   items,
@@ -29,13 +31,19 @@ export function NavMain({
     }[]
   }[]
 }) {
+
+  const pathName = usePathname()
+
+
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Platform</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
 
-          <Link key={item.title} href={item.url} className="rounded-none">
+          <Link key={item.title} href={item.url} className={cn("rounded-none",
+            pathName === item.url ? 'text-primary bg-primary/5' : 'text-muted-foreground'
+          )}>
             <SidebarMenuItem>
               <SidebarMenuButton tooltip={item.title}>
                 {item.icon && <item.icon />}
