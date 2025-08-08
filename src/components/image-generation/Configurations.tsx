@@ -22,6 +22,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { Slider } from "@/components/ui/slider"
 
 
 const formSchema = z.object({
@@ -145,6 +146,21 @@ const Configurations = () => {
                         )}
                     />
                 </div>
+
+                <FormField
+                    control={form.control}
+                    name="guidance"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Guidance</FormLabel>
+                            <FormControl>
+                                <Slider defaultValue={[field.value]} min={0} max={10} step={0.5} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
                 {/* <FormField
                     control={form.control}
                     name="username"
