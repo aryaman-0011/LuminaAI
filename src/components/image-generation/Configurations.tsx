@@ -139,7 +139,7 @@ const Configurations = () => {
                             <FormItem>
                                 <FormLabel>Number of Outputs</FormLabel>
                                 <FormControl>
-                                    <Input type='number' min={1} max={4} {...field} />
+                                    <Input type='number' min={1} max={4} {...field} onChange={(event) => field.onChange(+event.target.value)} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
