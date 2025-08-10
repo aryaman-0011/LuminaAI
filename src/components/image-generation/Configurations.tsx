@@ -49,7 +49,7 @@ const formSchema = z.object({
         error: 'Output format is required!'
     }),
 
-    output_quality: z.number().min(1, { error: 'Output quality should be atleast 1' }).max(4, { error: 'Output quality must be less than or equal to 100' }),
+    output_quality: z.number().min(50, { error: 'Output quality should be atleast 1' }).max(100, { error: 'Output quality must be less than or equal to 100' }),
 
     num_inference_steps: z.number().min(1, { error: 'Inference steps should be atleast 1' }).max(50, { error: 'Inference steps must be less than or equal to 50' }),
 })
