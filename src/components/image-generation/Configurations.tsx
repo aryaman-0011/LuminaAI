@@ -179,7 +179,7 @@ const Configurations = () => {
                                 <FormItem>
                                     <FormLabel className='flex items-center gap-2'>
 
-                                        Number of Outputs
+                                        Number of outputs
 
 
                                         <Tooltip>
