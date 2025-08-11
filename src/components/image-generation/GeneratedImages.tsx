@@ -1,9 +1,58 @@
 import React from 'react'
+import { Card, CardContent } from '../ui/card'
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/components/ui/carousel"
+import Image from 'next/image'
+
+const images = [
+    {
+        src: '/hero-images/Confident Woman in Red Outfit.jpeg',
+        alt: 'some alt text'
+    },
+    {
+        src: '/hero-images/Futuristic Woman in Armor.jpeg',
+        alt: 'some alt text'
+    },
+    {
+        src: '/hero-images/Man in Brown Suit.jpeg',
+        alt: 'some alt text'
+    },
+    {
+        src: '/hero-images/Poised Elegance of a Young Professional.jpeg',
+        alt: 'some alt text'
+    },
+]
 
 const GeneratedImages = () => {
-  return (
-    <div>GeneratedImages</div>
-  )
+
+    if (images.length === 0) {
+        return <Card className='w-full max-w-2xl bg-muted'>
+            <CardContent className='flex aspect-square items-center justify-center p-6'>
+                <span className='text-2xl'>No images generated</span>
+            </CardContent>
+        </Card>
+    }
+
+    return (
+        <Carousel className="w-full max-w-2xl">
+            <CarouselContent>
+                {images.map((image, index) => (
+                    <CarouselItem key={index}>
+                        <div className="flex relative items-center justify-center rounded-lg overflow-hidden aspect-square">
+                            <Image src={image.src} alt={image.alt} fill className='w-full h-full object-cover' />
+                        </div>
+                    </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+        </Carousel>
+    )
 }
 
 export default GeneratedImages
