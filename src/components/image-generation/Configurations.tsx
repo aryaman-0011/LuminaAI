@@ -32,33 +32,33 @@ import {
 import { Info } from 'lucide-react'
 
 
-const formSchema = z.object({
-    model: z.string({
-        error: 'Model is required!'
-    }),
+export const formSchema = z.object({
+    model: z.string().nonempty("Model is required!"),
 
-    prompt: z.string({
-        error: 'Prompt is required!'
-    }),
+    prompt: z.string().nonempty("Prompt is required!"),
 
-    guidance: z.number({
-        error: 'Guidance scale is reuired!'
-    }),
+    guidance: z.number({ error: "Guidance scale is required!" }),
 
-    num_output: z.number().min(1, { error: 'Number of outputs should be atleast 1.' }).max(4, { error: 'Number of outputs must be less than 4.' }),
+    num_output: z
+        .number({ error: "Number of outputs is required!" })
+        .min(1, "Number of outputs should be at least 1.")
+        .max(4, "Number of outputs must be less than or equal to 4."),
 
-    aspect_ratio: z.string({
-        error: 'Aspect ratio is required!'
-    }),
+    aspect_ratio: z.string().nonempty("Aspect ratio is required!"),
 
-    output_format: z.string({
-        error: 'Output format is required!'
-    }),
+    output_format: z.string().nonempty("Output format is required!"),
 
-    output_quality: z.number().min(50, { error: 'Output quality should be atleast 1' }).max(100, { error: 'Output quality must be less than or equal to 100' }),
+    output_quality: z
+        .number({ error: "Output quality is required!" })
+        .min(50, "Output quality should be at least 50.")
+        .max(100, "Output quality must be less than or equal to 100."),
 
-    num_inference_steps: z.number().min(1, { error: 'Inference steps should be atleast 1' }).max(50, { error: 'Inference steps must be less than or equal to 50' }),
-})
+    num_inference_steps: z
+        .number({ error: "Inference steps are required!" })
+        .min(1, "Inference steps should be at least 1.")
+        .max(50, "Inference steps must be less than or equal to 50."),
+});
+
 
 const Configurations = () => {
 
