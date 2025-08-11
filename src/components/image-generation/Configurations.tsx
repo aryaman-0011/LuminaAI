@@ -32,7 +32,7 @@ import {
 import { Info } from 'lucide-react'
 
 
-export const formSchema = z.object({
+export const ImageGenerationFormSchema = z.object({
     model: z.string().nonempty("Model is required!"),
 
     prompt: z.string().nonempty("Prompt is required!"),
@@ -63,8 +63,8 @@ export const formSchema = z.object({
 const Configurations = () => {
 
     // 1. Define your form.
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const form = useForm<z.infer<typeof ImageGenerationFormSchema>>({
+        resolver: zodResolver(ImageGenerationFormSchema),
         defaultValues: {
             model: "black-forest-labs/flux-dev",
             prompt: "",
@@ -78,7 +78,7 @@ const Configurations = () => {
     })
 
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    function onSubmit(values: z.infer<typeof ImageGenerationFormSchema>) {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
         console.log(values)
