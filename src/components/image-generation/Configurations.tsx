@@ -24,6 +24,12 @@ import {
 } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
 import { Textarea } from '../ui/textarea'
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
+import { Info } from 'lucide-react'
 
 
 const formSchema = z.object({
@@ -90,7 +96,20 @@ const Configurations = () => {
                         name="model"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Model</FormLabel>
+                                <FormLabel className='flex items-center gap-2'>
+
+                                    Model
+
+                                    <Tooltip>
+                                        <TooltipTrigger>
+                                            <Info className='w-4 h-4' />
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p>You can select any model from the dropdown menu.</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+
+                                </FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                     <FormControl>
                                         <SelectTrigger>
@@ -115,7 +134,20 @@ const Configurations = () => {
                             name="aspect_ratio"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Aspect Ratio</FormLabel>
+                                    <FormLabel className='flex items-center gap-2'>
+
+                                        Aspect Ratio
+
+                                        <Tooltip>
+                                            <TooltipTrigger>
+                                                <Info className='w-4 h-4' />
+                                            </TooltipTrigger>
+                                            <TooltipContent>
+                                                <p>Aspect ratio for the generated image.</p>
+                                            </TooltipContent>
+                                        </Tooltip>
+
+                                    </FormLabel>
                                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                                         <FormControl>
                                             <SelectTrigger>
@@ -145,7 +177,21 @@ const Configurations = () => {
                             name="num_output"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Number of Outputs</FormLabel>
+                                    <FormLabel className='flex items-center gap-2'>
+
+                                        Number of Outputs
+
+
+                                        <Tooltip>
+                                            <TooltipTrigger >
+                                                <Info className='w-4 h-4' />
+                                            </TooltipTrigger>
+                                            <TooltipContent>
+                                                <p>Total number of output images to generate.</p>
+                                            </TooltipContent>
+                                        </Tooltip>
+
+                                    </FormLabel>
                                     <FormControl>
                                         <Input type='number' min={1} max={4} {...field} onChange={(event) => field.onChange(+event.target.value)} />
                                     </FormControl>
@@ -164,8 +210,17 @@ const Configurations = () => {
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel className='flex items-center justify-between'>
-                                    <div>
+                                    <div className='flex items-center gap-2'>
                                         Guidance
+
+                                        <Tooltip>
+                                            <TooltipTrigger>
+                                                <Info className='w-4 h-4' />
+                                            </TooltipTrigger>
+                                            <TooltipContent>
+                                                <p>Prompt guidance for generated image.</p>
+                                            </TooltipContent>
+                                        </Tooltip>
                                     </div>
                                     <span>
                                         {field.value}
@@ -188,8 +243,18 @@ const Configurations = () => {
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel className='flex items-center justify-between'>
-                                    <div>
+                                    <div className='flex items-center gap-2'>
+
                                         Number of Inference Steps
+
+                                        <Tooltip>
+                                            <TooltipTrigger>
+                                                <Info className='w-4 h-4' />
+                                            </TooltipTrigger>
+                                            <TooltipContent>
+                                                <p>Number of denoising steps. Recommended range is 28-50 for dev model and 1-4 for schnell model.</p>
+                                            </TooltipContent>
+                                        </Tooltip>
                                     </div>
                                     <span>
                                         {field.value}
@@ -212,8 +277,18 @@ const Configurations = () => {
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel className='flex items-center justify-between'>
-                                    <div>
+                                    <div className='flex items-center gap-2'>
+
                                         Output Quality
+
+                                        <Tooltip>
+                                            <TooltipTrigger>
+                                                <Info className='w-4 h-4' />
+                                            </TooltipTrigger>
+                                            <TooltipContent>
+                                                <p>Quality when saving the output image, from 0 to 100. 100 is best quality and 0 is lowest quality.</p>
+                                            </TooltipContent>
+                                        </Tooltip>
                                     </div>
                                     <span>
                                         {field.value}
@@ -234,7 +309,21 @@ const Configurations = () => {
                         name="output_format"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Output Format</FormLabel>
+                                <FormLabel className='flex items-center gap-2'>
+
+                                    Output Format
+
+                                    <Tooltip>
+                                        <TooltipTrigger>
+                                            <Info className='w-4 h-4' />
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p>Format of the output images.</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+
+
+                                </FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                     <FormControl>
                                         <SelectTrigger>
@@ -259,7 +348,22 @@ const Configurations = () => {
                         name="prompt"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Prompt</FormLabel>
+                                <FormLabel className='flex items-center gap-2'>
+
+                                    Prompt
+
+
+                                    <Tooltip>
+                                        <TooltipTrigger>
+                                            <Info className='w-4 h-4' />
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p>Prompt for generating images.</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+
+
+                                </FormLabel>
                                 <FormControl>
                                     <Textarea {...field} rows={6} />
                                 </FormControl>
